@@ -75,7 +75,7 @@ class App extends Component {
 
         return (
             <>
-                <h1 className={s.title}>PhoneBook</h1>
+                <h1 className={s.title}>Phone book</h1>
                 <Form submitMethod={this.getSubmitData} />
                 <h2 className={s.title}>Contacts</h2>
                 <Filter value={filter} onChange={this.changeFilterValue} />
