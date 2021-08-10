@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Form } from './Components/Form/Form';
+import { Form } from './Form/Form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Contacts from './Components/Contact/Contact';
-import Filter from './Components/Filter/Filter';
+import Contacts from './Contact/Contact';
+import Filter from './Filter/Filter';
 import s from './App.css';
 
 class App extends Component {
