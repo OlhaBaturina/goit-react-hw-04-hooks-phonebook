@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Form from './Components/Form/Form';
+import { Form } from './Components/Form/Form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Contacts from './Components/Contact/Contact';
@@ -28,7 +28,7 @@ class App extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.contacts !== prevState.contacts) {
-            console.log('Обновились контакты');
+            console.log('Обновились контакты:', this.state.contacts);
             localStorage.setItem(
                 'contacts',
                 JSON.stringify(this.state.contacts),
@@ -58,6 +58,7 @@ class App extends Component {
 
     getVisibleContacts = () => {
         const { contacts, filter } = this.state;
+
         return contacts.filter(contact =>
             contact.name.toLowerCase().includes(filter.toLowerCase()),
         );
