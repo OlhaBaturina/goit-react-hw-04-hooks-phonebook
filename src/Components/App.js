@@ -12,7 +12,7 @@ const useLocalStorage = (key, defaultValue) => {
     });
 
     useEffect(() => {
-        window.localStorage.setItem('contacts', JSON.stringify(state));
+        window.localStorage.setItem(key, JSON.stringify(state));
     }, [key, state]);
 
     return [state, setState];
@@ -20,8 +20,7 @@ const useLocalStorage = (key, defaultValue) => {
 
 export function App() {
     const [contacts, setContacts] = useLocalStorage('contacts', {});
-
-    const [filter, setFilter] = useState('');
+    const [filterName, setFilterName] = useState('');
 
     const getSubmitData = data => {
         if (
@@ -43,22 +42,24 @@ export function App() {
         );
 
     const changeFilterValue = event => {
-        setFilter(event.target.value);
+        setFilterName(event.target.value);
     };
 
     const getVisibleContacts = () => {
-        contacts.includes(filter);
+        return contacts.filter(contact =>
+            contact.name.toLowerCase().includes(filterName.toLowerCase()),
+        );
     };
 
-    const visibleContacts = getVisibleContacts();
+    const getContacts = getVisibleContacts();
 
     return (
         <>
             <h1 className={s.title}>Phone book</h1>
             <Form submitMethod={getSubmitData} />
             <h2 className={s.title}>Contacts</h2>
-            <Filter value={filter} onChange={changeFilterValue} />
-            <Contacts contacts={contacts} deleteFunction={handelDelete} />
+            <Filter value={filterName} onChange={changeFilterValue} />
+            <Contacts contacts={getContacts} deleteFunction={handelDelete} />
             <ToastContainer />
         </>
     );
