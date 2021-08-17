@@ -6,6 +6,8 @@ import Contacts from './Contact/Contact';
 import Filter from './Filter/Filter';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import s from './App.css';
+// import JoyRide from "react-joyride";
+import Tour from './Tour/Tour';
 
 export function App() {
     const [contacts, setContacts] = useLocalStorage('contacts', [
@@ -42,8 +44,46 @@ export function App() {
 
     const getContacts = getVisibleContacts();
 
+    // const Tour = () => {
+    //     return (
+    //       <>
+    //         <JoyRide
+    //           steps={TOUR_STEPS}
+    //           run={true}
+    //           continuous={true}
+    //           showSkipButton={true}
+    //           showProgress={true}
+    //           styles={{
+    //             tooltipContainer: {
+    //               textAlign: "left"
+    //             },
+    //             buttonNext: {
+    //               backgroundColor: "rgba(0, 139, 139, 0.845)",
+    //               color: 'bisque'
+    //             },
+    //             buttonBack: {
+    //               marginRight: 10
+    //             },
+    //             buttonClose: {
+    //                 color: "red"
+    //             },
+    //             buttonSkip:{
+    //                 backgroundColor: "bisque",
+    //                 color: "rgb(0, 139, 139)"
+    //             }
+    //           }}
+    //           locale={{
+    //             last: "End tour",
+    //             skip: "Close tour"
+    //           }}
+    //         />
+    //       </>
+    //     );
+    //   };
+
     return (
         <>
+            <Tour />
             <h1 className={s.title}>Phone book</h1>
             <Form submitMethod={getSubmitData} />
             <h2 className={s.title}>Contacts</h2>
